@@ -3,31 +3,60 @@
 
 // When size is submitted by the user, call makeGrid()
 
-function makeGrid() {
+const GRID = {
+	'rows': '1',
+	'columns': '1'
+};
 
+let color = '#efefef';
+
+function makeGrid() {
 // Your code goes here!
+	console.log( "-- form submitted -- " );
 
 }
+
+
+
+/* ################################################
+	 Start -- submit event
+###################################################*/
+
+function submitForm() {
+	$( "#sizePicker" ).on( "submit", function( evt ) {
+		evt.preventDefault();
+		makeGrid();
+	});
+}
+$(submitForm);
+
+/* ################################################
+	 Start -- submit event
+###################################################*/
+
+
+
+
 
 
 /* ################################################
 	 Start -- Color input
 ###################################################*/
 
-// Let's set our own default color on page load, just because
+// Let's set our own color on page load, just because
 function defaultColor() {
-	var defaultColor = "#efefef";
-	$("#colorPicker").attr("value", defaultColor);
+	$("#colorPicker").attr("value", color);
 	//console.log( $("#colorPicker") );
 }
 $(defaultColor);
 
 
-// This function looks for change in color, and sets the
-// input's color "value" on color change
+/* This function looks for change in color, and sets the
+   input's color "value" on color change
+*/
 function changeColor() {
-	$( "#colorPicker" ).on( 'change', function( evt ) {
-		var color = evt.target.value;
+	$( "#colorPicker" ).on( "change", function( evt ) {
+		color = evt.target.value;
 		$("#colorPicker").attr("value", color);
 		console.log( "-- Color input changed -- " );
 		//console.log( evt );
@@ -40,7 +69,6 @@ $(changeColor);
 
 // Get current color after a color change
 function getColor() {
-	color = $("#colorPicker").attr("value");
 	console.log("Current color is: " + color);
 }
 
@@ -56,31 +84,32 @@ function getColor() {
 	 Start -- Size input
 ###################################################*/
 
-// Let's set our own default grid on page load, just because
+// Let"s set our own default grid on page load, just because
 function defaultGrid() {
-	var defaultRows = 2;
-	var defaultCols = 2;
+	let defaultRows = 2;
+	let defaultCols = 2;
 	$("#inputHeight").attr("value", defaultRows);
 	$("#inputWeight").attr("value", defaultCols);
 }
 $(defaultGrid);
 
 
-// This function looks for change in grid input, and
-// sets the grid input's "value" on input change
+/*	This function looks for change in grid input, and
+  	sets the grid input's "value" on input change.
+*/
 function changeGrid() {
-	$( "#inputHeight" ).on( 'change', function( evt ) {
-		var rows = evt.target.value;
-		$("#inputHeight").attr("value", rows);
+	$( "#inputHeight" ).on( "change", function( evt ) {
+		GRID.rows = evt.target.value;
+		$("#inputHeight").attr("value", GRID.rows);
 		console.log( "-- Grid rows changed --" );
 		console.log( evt );
 		//console.log( evt.target.value );
 		getGrid();
 	});
 
-	$( "#inputWeight" ).on( 'change', function( evt ) {
-		var cols = evt.target.value;
-		$("#inputWeight").attr("value", cols);
+	$( "#inputWeight" ).on( "change", function( evt ) {
+		GRID.columns = evt.target.value;
+		$("#inputWeight").attr("value", GRID.columns);
 		console.log( "-- Grid columns changed --" );
 		console.log( evt );
 		//console.log( evt.target.value );
@@ -91,11 +120,9 @@ $(changeGrid);
 
 
 
-// Get current grid after an input change
+// Print current grid after an input change
 function getGrid() {
-	rows = $("#inputHeight").attr("value");
-	cols = $("#inputWeight").attr("value");
-	console.log("Current rows are: " + rows + "\nCurrent columns are: " + cols);
+	console.log("Current rows are: " + GRID.rows + "\nCurrent columns are: " + GRID.columns);
 }
 
 
