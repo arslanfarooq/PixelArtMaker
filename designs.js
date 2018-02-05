@@ -13,7 +13,13 @@ let color = '#efefef';
 function makeGrid() {
 // Your code goes here!
 let tableGrid = "";
-$("#pixelCanvas").empty();
+
+let gridStatus = document.getElementById('pixelCanvas');
+
+// Let's use while loop to clear the grid
+while ( gridStatus.firstElementChild ) {
+	$("#pixelCanvas").empty();
+}
 
 	for ( r = GRID.rows; r >= 1; --r ) {
 		tableGrid += "<tr>";
