@@ -24,13 +24,12 @@ $(defaultColor);
 
 
 // This function looks for change in color, and sets the
-// imput's color "value" on color change
+// input's color "value" on color change
 function changeColor() {
-	var color = "";
 	$( "#colorPicker" ).on( 'change', function( evt ) {
 		var color = evt.target.value;
 		$("#colorPicker").attr("value", color);
-		//console.log( "---" );
+		console.log( "-- Color input changed -- " );
 		//console.log( evt );
 		//console.log( evt.target.value );
 		getColor();
@@ -41,10 +40,9 @@ $(changeColor);
 
 // Get current color after a color change
 function getColor() {
-	color = $(colorPicker).attr("value");
+	color = $("#colorPicker").attr("value");
 	console.log("Current color is: " + color);
 }
-$(getColor);
 
 /* ################################################
 	 End -- Color input
@@ -66,6 +64,39 @@ function defaultGrid() {
 	$("#inputWeight").attr("value", defaultCols);
 }
 $(defaultGrid);
+
+
+// This function looks for change in grid input, and
+// sets the grid input's "value" on input change
+function changeGrid() {
+	$( "#inputHeight" ).on( 'change', function( evt ) {
+		var rows = evt.target.value;
+		$("#inputHeight").attr("value", rows);
+		console.log( "-- Grid rows changed --" );
+		console.log( evt );
+		//console.log( evt.target.value );
+		getGrid();
+	});
+
+	$( "#inputWeight" ).on( 'change', function( evt ) {
+		var cols = evt.target.value;
+		$("#inputWeight").attr("value", cols);
+		console.log( "-- Grid columns changed --" );
+		console.log( evt );
+		//console.log( evt.target.value );
+		getGrid();
+	});
+}
+$(changeGrid);
+
+
+
+// Get current grid after an input change
+function getGrid() {
+	rows = $("#inputHeight").attr("value");
+	cols = $("#inputWeight").attr("value");
+	console.log("Current rows are: " + rows + "\nCurrent columns are: " + cols);
+}
 
 
 /* ################################################
