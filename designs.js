@@ -12,7 +12,20 @@ let color = '#efefef';
 
 function makeGrid() {
 // Your code goes here!
-	console.log( "-- form submitted -- " );
+let tableGrid = "";
+$("#pixelCanvas").empty();
+
+	for ( r = GRID.rows; r >= 1; --r ) {
+		tableGrid += "<tr>";
+
+		for ( c = GRID.columns; c >= 1; c-- ) {
+			tableGrid += "<td></td>";
+		}
+		tableGrid += "</tr>";
+
+	}
+
+$("#pixelCanvas").append(tableGrid);
 
 }
 
@@ -85,13 +98,11 @@ function getColor() {
 ###################################################*/
 
 // Let"s set our own default grid on page load, just because
-function defaultGrid() {
-	let defaultRows = 2;
-	let defaultCols = 2;
-	$("#inputHeight").attr("value", defaultRows);
-	$("#inputWeight").attr("value", defaultCols);
+/*function defaultGrid() {
+	$("#inputHeight").attr("value", GRID.rows);
+	$("#inputWeight").attr("value", GRID.columns);
 }
-$(defaultGrid);
+$(defaultGrid);*/
 
 
 /*	This function looks for change in grid input, and
