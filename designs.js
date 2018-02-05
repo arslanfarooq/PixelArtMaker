@@ -4,11 +4,11 @@
 // When size is submitted by the user, call makeGrid()
 
 const GRID = {
-	'rows': '1',
-	'columns': '1'
+	'rows': '4',
+	'columns': '4'
 };
 
-let color = '#efefef';
+let color = '#01b3e3';
 
 
 
