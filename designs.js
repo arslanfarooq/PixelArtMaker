@@ -10,30 +10,81 @@ const GRID = {
 
 let color = '#efefef';
 
+
+
+
+
+
+
+
+
+
+/* ################################################
+	 Start -- makeGrid()
+###################################################*/
+
 function makeGrid() {
 // Your code goes here!
 let tableGrid = "";
 
+/*
+	Let's use while loop to clear the grid
+	https://developer.mozilla.org/en-US/docs/Web/API/Node/firstChild
+	https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/firstElementChild
+*/
 let gridStatus = document.getElementById('pixelCanvas');
 
-// Let's use while loop to clear the grid
 while ( gridStatus.firstElementChild ) {
 	$("#pixelCanvas").empty();
 }
 
-	for ( r = GRID.rows; r >= 1; --r ) {
-		tableGrid += "<tr>";
+/*
+	Creating the table grid
+	https://stackoverflow.com/questions/3479783/insert-html-using-jquery-html
 
-		for ( c = GRID.columns; c >= 1; c-- ) {
-			tableGrid += "<td></td>";
-		}
-		tableGrid += "</tr>";
+*/
+for ( r = GRID.rows; r >= 1; --r ) {
+	tableGrid += "<tr>";
 
+	for ( c = GRID.columns; c >= 1; c-- ) {
+		tableGrid += "<td></td>";
 	}
+	tableGrid += "</tr>";
+
+}
 
 $("#pixelCanvas").append(tableGrid);
 
 }
+/* ################################################
+	 End -- makeGrid()
+###################################################*/
+
+
+
+
+
+/* ################################################
+	 Start -- fill color
+###################################################*/
+
+function fillColor() {
+	$( "#pixelCanvas" ).on( "click", "td", function( evt ) {
+    $( evt.target ).css( 'background', color );
+	});
+}
+$(fillColor);
+
+/* ################################################
+	 End -- fill color
+###################################################*/
+
+
+
+
+
+
+
 
 
 
@@ -70,8 +121,9 @@ function defaultColor() {
 $(defaultColor);
 
 
-/* This function looks for change in color, and sets the
-   input's color "value" on color change
+/*
+	This function looks for change in color, and sets the
+  input's color "value" on color change
 */
 function changeColor() {
 	$( "#colorPicker" ).on( "change", function( evt ) {
@@ -103,16 +155,9 @@ function getColor() {
 	 Start -- Size input
 ###################################################*/
 
-// Let"s set our own default grid on page load, just because
-/*function defaultGrid() {
-	$("#inputHeight").attr("value", GRID.rows);
-	$("#inputWeight").attr("value", GRID.columns);
-}
-$(defaultGrid);*/
-
-
-/*	This function looks for change in grid input, and
-  	sets the grid input's "value" on input change.
+/*
+	This function looks for change in grid input, and
+  sets the grid input's "value" on input change.
 */
 function changeGrid() {
 	$( "#inputHeight" ).on( "change", function( evt ) {
