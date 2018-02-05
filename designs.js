@@ -70,7 +70,13 @@ $("#pixelCanvas").append(tableGrid);
 
 function fillColor() {
 	$( "#pixelCanvas" ).on( "click", "td", function( evt ) {
-    $( evt.target ).css( 'background', color );
+    $( evt.target ).css( "background", color );
+	});
+
+	// Let's have the feature to remove color on right-click
+	$( "#pixelCanvas" ).on( "contextmenu", "td", function( evt ) {
+		evt.preventDefault();
+    $( evt.target ).css( "background", "#ffffff" );
 	});
 }
 $(fillColor);
